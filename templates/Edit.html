@@ -1,0 +1,23 @@
+{%extends"showAllBurgers.html"%}
+
+{%block content%}
+<div class="container">
+<h1>Edit Burger</h1>
+<form method="post">
+<table class="table">
+    <tr><td>Burger Id</td> <td>{{burger[0]}}</td></tr>
+    <tr><td>Burger Name</td> 
+        <td><input type="text" required class="form-control" name="cname" value="{{burger[1]}}"/></td></tr>
+    <tr><td>Price</td> 
+        <td><input type="text" required class="form-control" name="price" value="{{burger[2]}}"/></td></tr>
+    <tr><td>Image</td> 
+        <td><input type="text" required class="form-control" name="image" value="{{burger[3]}}"/></td></tr>
+    <tr><td>Quantity</td> 
+        <td><input type="text" required class="form-control" name="qty" value="{{burger[4]}}"/></td></tr>
+    <tr><td>
+        <button type="submit" class="button btn-success">Edit</button>
+    </td></tr>
+</table>
+</form>
+</div>
+{%endblock%}

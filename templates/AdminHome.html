@@ -1,0 +1,49 @@
+{%extends"showAllBurgers.html"%}
+
+{%block content%}
+<script type="text/javascript">
+    function ShowConfirm(id)
+    {
+        ans = confirm("Are you sure you want to delete(y/n)?");
+        if(ans == true)
+        {
+            url = "http://127.0.0.1:5000/Remove/"+id;
+            window.location = url; //redirect to another url
+        }
+    }
+</script>
+<div class="container">    
+  <div class="row">
+    <a href="/addRecord">Add Record</a>
+    </p>
+    <table class="table">
+    <tr>
+        <th>Id</th> 
+        <th>Name</th>
+        <th>Price</th>
+        <th>Image</th>
+        <th>Quantity</th>
+        <th>Image</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    {%for burger in burgers%}
+    <tr>
+        <td>{{burger[0]}}</td>
+        <td>{{burger[1]}}</td>
+        <td>{{burger[2]}}</td>
+        <td>{{burger[3]}}</td>
+        <td>{{burger[4]}}</td>
+        <td><img src="/static/images/{{burger[3]}}"  
+            style="width:100px;height: 100px;" alt="Image"></td>
+        <td><a href="edit/{{burger[0]}}" class="btn btn-danger"> Edit</a></td>
+        <td> <button type="button" class="button btn-danger" 
+            onclick="ShowConfirm('{{burger[0]}}')">Remove</button></td>
+    </tr>
+    {%endfor%}
+    </table>
+  </div>
+</div><br>
+<br><br>
+{%endblock%}
+

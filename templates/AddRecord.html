@@ -1,0 +1,22 @@
+{%extends"showAllBurgers.html"%}
+
+{%block content%}
+<div class="container">
+<h1>Add Burger</h1>
+<form method="post" enctype="multipart/form-data">
+<table class="table">
+    <tr><td>Burger Name</td> 
+        <td><input type="text" required class="form-control" name="bname" /></td></tr>
+    <tr><td>Burger Price</td> 
+        <td><input type="number" required class="form-control" name="price" /></td></tr>
+    <tr><td>Upload Image</td> 
+        <td><input type="file" required class="form-control" name="image" /></td></tr>
+    <tr><td>Quantity</td> 
+        <td><input type="number" required class="form-control" name="qty" /></td></tr>
+    <tr><td>
+        <button type="submit" class="button btn-success">Add Record</button>
+    </td></tr>
+</table>
+</form>
+</div>
+{%endblock%}

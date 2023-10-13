@@ -1,0 +1,62 @@
+{%extends"showAllBurgers.html"%}
+
+{%block content%}
+<script type="text/javascript">
+    function increment(myid)
+    {
+        val = document.getElementById(myid);
+        if(parseInt(val.value)<5)
+        {
+            val.value = parseInt(val.value)+1;
+        }
+    }
+    function decrement(myid)
+    {
+        val = document.getElementById(myid);
+        if(parseInt(val.value)>1)
+        {
+            val.value = parseInt(val.value)-1;
+        }
+    }
+</script>
+<div class="container">
+    <h1>Show All Cart Items</h1>
+    </hr>
+    <P></P>
+    <table class="table">
+        <tr><th>Burger Id</th><th>Burger Name</th><th>Price</th><th>Images</th><th>Quantity</th>
+        <th>Update Item</th><th>Remove Item</th></tr>
+        {%for burger in burgers%}
+        <form method="post" action="/UpdateItem">
+        <tr><td>{{burger[0]}}
+            <input type="hidden" name="bid" value="{{burger[0]}}"/>
+        </td>
+            <td>{{burger[1]}}</td>
+            <td>{{burger[2]}}</td>
+            <td><img src="/static/images/{{burger[3]}}" height="50px" width="50px"/></td>
+            <td>
+                <input type="button" id="decrement11" 
+                onclick='decrement("qty{{burger[0]}}")' value="-"/>
+
+                <input type="text" name="qty" id="qty{{burger[0]}}" 
+                value="{{burger[4]}}" size="2" readonly/>
+
+                <input type="button" id="increment11" 
+                onclick="increment('qty{{burger[0]}}')" value="+"/>
+            </td>
+            <td>
+            <input type="submit" name="action" value="Update">
+            </td>
+
+            <td><a href="/RemoveItem/{{burger[0]}}">Remove</a></td>
+            
+        </tr>
+        </form>
+        {%endfor%}
+        
+    </table>
+    <p>
+        <h2>Total Amount = {{session["total"]}}</h2>
+        <a href="MakePayment"> Proceed To make payment</a>
+</div>
+{%endblock%}
